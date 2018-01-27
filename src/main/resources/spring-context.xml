@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+">
+    <!--обработчик-->
+    <bean id="shredderExecuteble" class="ru.ezhov.tabledestructor.ShredderExecutor"/>
+    
+    <!--ИНТЕРФЕЙС ДЛЯ РАБОТЫ-->
+    <bean id="basicFrame" class="ru.ezhov.tabledestructor.FrameExecute" lazy-init="true">
+        <constructor-arg ref="shredderExecuteble"/>
+    </bean>
+    
+    <!--КОНСОЛЬ ДЛЯ РАБОТЫ-->
+    <bean id="argsExecutor" class="ru.ezhov.tabledestructor.ArgsExecutor" lazy-init="true">
+        <constructor-arg ref="shredderExecuteble"/>
+    </bean>
+    
+</beans>
